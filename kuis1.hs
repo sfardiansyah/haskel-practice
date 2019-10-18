@@ -19,3 +19,9 @@ kpk a b = head [z | z <- (map (*a) [1..]), z `mod` b == 0]
 
 -- 2. (x, y) pair
 xypair = [(x,y) | x <- [1..3], y <- [1..(2*x)]]
+
+-- (x, y) pair with map
+pair a b = (a, b)
+getPair [] = []
+getPair (x:xs) = map (pair x) [1..2*x] ++ getPair xs
+xypair = getPair [1..3]
