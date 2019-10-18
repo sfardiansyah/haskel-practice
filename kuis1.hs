@@ -31,4 +31,6 @@ merge [] ys = ys
 merge xs [] = xs
 merge kiri@(x:xs) kanan@(y:ys)      | x < y     = x : merge xs kanan
                                     | x >= y    = y : merge kiri ys
-mergeSort xs = merge (mergeSort (take (length xs) xs)) (mergeSort (drop (length xs) xs))
+mergeSort []    = []
+mergeSort [a]   = [a]
+mergeSort xs    = merge (mergeSort (take (length xs) xs)) (mergeSort (drop (length xs) xs))
